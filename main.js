@@ -21,7 +21,21 @@ function main(key){
 
         });
     }
+    this.rebut = function(flag) {
+        $.ajax({
+            url:"http://idea/rebut.php", 
+            type: "POST",
+            data:({
 
+                flag:flag
+            }),
+            success:function(data){
+
+                console.log(data);
+            }
+
+        });
+    }
     this.read =function() {
 
         var url = $('#massage').val();
@@ -112,15 +126,15 @@ function main(key){
 
 
     function stringArray(str) {
-       
+
         array = str.split('\n');
-      
-       array.splice(array.length-1,1);
-//       array.map(string => { parseInt(string)})
-       for(var i = 0; i<array.length;i++) {
-           array[i]=Number( array[i]);
-       }
-        
+
+        array.splice(array.length-1,1);
+        //       array.map(string => { parseInt(string)})
+        for(var i = 0; i<array.length;i++) {
+            array[i]=Number( array[i]);
+        }
+
 
 
     }
@@ -237,7 +251,7 @@ $('#q').on('click',function(){
     var arr1 = [],arr2 =[];
     mainА.keyFunc();
     mainА.read();
-
+    mainА.rebut(1);
 
 
 
@@ -296,7 +310,7 @@ $('#q').on('click',function(){
         },100);
 
     },300);
-
+alert('Шифрование выполнено!');
 });
 $('#qq').on('click',function(){
     var key = $('#key').val();
@@ -304,6 +318,7 @@ $('#qq').on('click',function(){
     var arr1 = [],arr2 =[];
     mainА.keyFunc();
     mainА.read();
+    mainА.rebut(2);
     setTimeout(function(){
         var arr = mainА.getArrayKey(),decryptio = [];
 
@@ -334,7 +349,7 @@ $('#qq').on('click',function(){
         },100);
 
     },300);
-
+alert('Дешифрование выполнено!');
 });
 
 
